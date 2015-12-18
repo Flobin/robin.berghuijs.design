@@ -17,7 +17,7 @@ gulp.task('styles', function() {
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer('last 2 version'))
     .pipe(gulp.dest('css'))
-    .pipe(rename("style.css"))
+    .pipe(rename({suffix: '.min'}))
     .pipe(minifycss())
     .pipe(gulp.dest('css'))
     .pipe(notify({ message: 'Styles task complete' }));

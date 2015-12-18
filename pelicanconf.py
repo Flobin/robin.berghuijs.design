@@ -55,10 +55,24 @@ SITEMAP = {
 I18N_SUBSITES = {
     'nl': {
         'SITENAME': 'Robin Berghuijs Design',
+        'INDEX_SAVE_AS': 'nieuws.html',
+        'MENUITEMS': [
+            ('Nieuws','nieuws.html'),
+        ],
     },
     'en': {
         'SITENAME': 'Robin Berghuijs Design',
+        'INDEX_SAVE_AS': 'news.html',
+        'MENUITEMS': [
+            ('News','news.html'),
+        ],
     }
 }
 
 THEME = "themes/flobin"
+CSS_FILE = 'style.css'
+
+# static index page
+
+
+# menu

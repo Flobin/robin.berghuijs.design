@@ -8,3 +8,4 @@
 output
 projenv/
 **/node_modules/
+**/bourbon/
