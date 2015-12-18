@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = 'Robin Berghuijs'
 SITENAME = 'Robin Berghuijs Design'
-SITEURL = ''
+SITEURL = 'http://robin.berghuijs.design/'
 
 PATH = 'content'
 
@@ -32,4 +32,33 @@ SOCIAL = (('You can add links in your config file', '#'),
 DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
+RELATIVE_URLS = True
+
+PLUGIN_PATHS = ['pelican-plugins']
+PLUGINS = ['i18n_subsites','neighbors','sitemap']
+
+# these are the defaults
+SITEMAP = {
+    'format': 'xml',
+#     'priorities': {
+#         'articles': 0.5,
+#         'indexes': 0.5,
+#         'pages': 0.5
+#     },
+#     'changefreqs': {
+#         'articles': 'monthly',
+#         'indexes': 'daily',
+#         'pages': 'monthly'
+#     }
+}
+
+I18N_SUBSITES = {
+    'nl': {
+        'SITENAME': 'Robin Berghuijs Design',
+    },
+    'en': {
+        'SITENAME': 'Robin Berghuijs Design',
+    }
+}
+
+THEME = "themes/flobin"
