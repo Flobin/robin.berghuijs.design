@@ -127,24 +127,6 @@ body {
     min-height: 100vh;
     flex-direction: column;
 }
-.container {
-    width: 100%;
-    @include until($M) {
-        padding: 0 1em;
-    }
-    @include at-least($M) {
-        width: 95%;
-    }
-    @include at-least($L) {
-        width: 80%;
-    }
-    @include at-least($XL) {
-        width: 70%;
-    }
-    max-width: 65rem;
-    margin-left: auto;
-    margin-right: auto;
-}
 .site-header {
     padding: 1em 0;
     margin-bottom: 2rem;

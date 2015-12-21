@@ -410,24 +410,6 @@ body {
       -ms-flex-direction: column;
           flex-direction: column; }
 
-.container, .site-header {
-  width: 100%;
-  max-width: 65rem;
-  margin-left: auto;
-  margin-right: auto; }
-  @media screen and (max-width: 767px) {
-    .container, .site-header {
-      padding: 0 1em; } }
-  @media screen and (min-width: 768px) {
-    .container, .site-header {
-      width: 95%; } }
-  @media screen and (min-width: 1024px) {
-    .container, .site-header {
-      width: 80%; } }
-  @media screen and (min-width: 1200px) {
-    .container, .site-header {
-      width: 70%; } }
-
 .site-header {
   padding: 1em 0;
   margin-bottom: 2rem; }

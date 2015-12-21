@@ -16,10 +16,10 @@ gulp.task('styles', function() {
   return gulp.src('src/styles/main.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer('last 2 version'))
-    .pipe(gulp.dest('css'))
+    .pipe(gulp.dest('static/css'))
     .pipe(rename({suffix: '.min'}))
     .pipe(minifycss())
-    .pipe(gulp.dest('css'))
+    .pipe(gulp.dest('static/css'))
     .pipe(notify({ message: 'Styles task complete' }));
 });
 
@@ -28,22 +28,22 @@ gulp.task('scripts', function() {
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
     .pipe(concat('main.js'))
-    .pipe(gulp.dest('js'))
+    .pipe(gulp.dest('static/js'))
     .pipe(rename({suffix: '.min'}))
     .pipe(uglify())
-    .pipe(gulp.dest('js'))
+    .pipe(gulp.dest('static/js'))
     .pipe(notify({ message: 'Scripts task complete' }));
 });
 
 gulp.task('images', function() {
   return gulp.src('src/images/**/*')
     .pipe(cache(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true })))
-    .pipe(gulp.dest('img'))
+    .pipe(gulp.dest('static/img'))
     .pipe(notify({ message: 'Images task complete' }));
 });
 
 gulp.task('clean', function() {
-    return del(['css', 'js', 'img']);
+    return del(['static/css', 'static/js', 'static/img']);
 });
 
 gulp.task('default', ['clean'], function() {
@@ -60,6 +60,6 @@ gulp.task('watch', function() {
   // Create LiveReload server
   livereload.listen();
   // Watch any files in dist/, reload on change
-  gulp.watch(['css/**/*','img/**/*','js/**/*']).on('change', livereload.changed);
+  gulp.watch(['static/css/**/*','static/img/**/*','static/js/**/*']).on('change', livereload.changed);
 
 });

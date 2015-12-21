@@ -23,4 +23,4 @@ DELETE_OUTPUT_DIRECTORY = True
 #DISQUS_SITENAME = ""
 #GOOGLE_ANALYTICS = ""
 
-CSS_FILE = 'style.min.css'
+CSS_FILE = 'main.min.css'

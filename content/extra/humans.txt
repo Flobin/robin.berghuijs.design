@@ -1,0 +1,21 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Robin Berghuijs -- I made this -- @flobin
+
+# THANKS
+
+    #reddit-webdesign on irc.freenode.net
+
+# TECHNOLOGY COLOPHON
+
+    HTML5
+    CSS3
+    Javascript, Modernizr
+    Python
+    SCSS, SASS
+    Atom
+    Cyberduck
+    Namecheap

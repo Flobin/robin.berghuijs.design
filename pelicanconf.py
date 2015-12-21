@@ -3,7 +3,6 @@
 from __future__ import unicode_literals
 
 AUTHOR = 'Robin Berghuijs'
-SITENAME = 'Robin Berghuijs Design'
 SITEURL = 'http://robin.berghuijs.design/'
 
 PATH = 'content'
@@ -20,14 +19,14 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (('Pelican', 'http://getpelican.com/'),
-         ('Python.org', 'http://python.org/'),
-         ('Jinja2', 'http://jinja.pocoo.org/'),
-         ('You can modify those links in your config file', '#'),)
+# LINKS = (('Pelican', 'http://getpelican.com/'),
+#          ('Python.org', 'http://python.org/'),
+#          ('Jinja2', 'http://jinja.pocoo.org/'),
+#          ('You can modify those links in your config file', '#'),)
 
 # Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+# SOCIAL = (('You can add links in your config file', '#'),
+#           ('Another social link', '#'),)
 
 DEFAULT_PAGINATION = 10
 
@@ -52,27 +51,52 @@ SITEMAP = {
 #     }
 }
 
+THEME = 'themes/flobin'
+OUTPUT_PATH = 'output/'
+SITENAME = 'Robin Berghuijs Design'
+INDEX_SAVE_AS = 'blog/index.html'
+INDEX_URL = 'blog'
+MENUITEMS = [
+    ('Blog', 'blog/index.html')
+]
+CSS_FILE = 'main.css'
+
 I18N_SUBSITES = {
-    'nl': {
-        'SITENAME': 'Robin Berghuijs Design',
-        'INDEX_SAVE_AS': 'nieuws.html',
-        'MENUITEMS': [
-            ('Nieuws','nieuws.html'),
-        ],
-    },
+    # 'nl': {
+    #     'THEME': 'themes/flobin',
+    #     'OUTPUT_PATH': 'output/',
+    #     'SITENAME': 'Robin Berghuijs Design',
+    #     'INDEX_SAVE_AS': 'nieuws.html',
+    #     'MENUITEMS': [
+    #         ('Nieuws','nieuws.html'),
+    #     ],
+    # },
     'en': {
+        'THEME': 'themes/flobin',
+        'OUTPUT_PATH': 'output/en/',
         'SITENAME': 'Robin Berghuijs Design',
-        'INDEX_SAVE_AS': 'news.html',
+        'INDEX_SAVE_AS': 'blog/index.html',
         'MENUITEMS': [
-            ('News','news.html'),
+            ('Blog','blog/index.html'),
         ],
     }
 }
 
-THEME = "themes/flobin"
-CSS_FILE = 'style.css'
+DELETE_OUTPUT_DIRECTORY = True
 
-# static index page
+PAGE_URL = '{slug}/'
+PAGE_SAVE_AS = '{slug}/index.html'
+ARTICLE_URL = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
+ARTICLE_SAVE_AS = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
+YEAR_ARCHIVE_SAVE_AS = 'blog/{date:%Y}/index.html'
+MONTH_ARCHIVE_SAVE_AS = 'blog/{date:%Y}/{date:%m}/index.html'
+DAY_ARCHIVE_SAVE_AS = ''
+AUTHOR_SAVE_AS = ''
 
-
-# menu
+STATIC_PATHS = ['extra/robots.txt', 'extra/humans.txt', 'extra/favicon.ico', 'extra/favicon.png']
+EXTRA_PATH_METADATA = {
+    'extra/robots.txt': {'path': 'robots.txt'},
+    'extra/humans.txt': {'path': 'humans.txt'},
+    'extra/favicon.ico': {'path': 'favicon.ico'},
+    'extra/favicon.png': {'path': 'favicon.png'},
+}

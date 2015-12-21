@@ -28,7 +28,7 @@
         {% if TAG_FEED_RSS and tag %}
         <link href="{{ FEED_DOMAIN }}/{{ TAG_FEED_RSS|format(tag.slug) }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Tags RSS Feed" />
         {% endif %}
-        <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/{{ CSS_FILE }}" />
         {% endblock head %}
 </head>
 
@@ -51,6 +51,8 @@
             {% endfor %}
           {% endif %}
         {% endif %}
+        {% block translation_links %}
+        {% endblock translation_links %}
         </ul></nav><!-- /#menu -->
         {% block content %}
         {% endblock %}
