@@ -1,7 +1,6 @@
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
-    minifycss = require('gulp-minify-css'),
     jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
     imagemin = require('gulp-imagemin'),
@@ -10,6 +9,7 @@ var gulp = require('gulp'),
     notify = require('gulp-notify'),
     cache = require('gulp-cache'),
     livereload = require('gulp-livereload'),
+    nano = require('gulp-cssnano'),
     del = require('del');
 
 gulp.task('styles', function() {
@@ -18,7 +18,7 @@ gulp.task('styles', function() {
     .pipe(autoprefixer('last 2 version'))
     .pipe(gulp.dest('static/css'))
     .pipe(rename({suffix: '.min'}))
-    .pipe(minifycss())
+    .pipe(nano())
     .pipe(gulp.dest('static/css'))
     .pipe(notify({ message: 'Styles task complete' }));
 });

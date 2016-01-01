@@ -7,7 +7,7 @@ SITEURL = 'http://robin.berghuijs.design/'
 
 PATH = 'content'
 
-TIMEZONE = 'Europe/Amsterdam'
+TIMEZONE = 'Europe/Paris'
 
 DEFAULT_LANG = 'nl'
 
@@ -21,7 +21,6 @@ AUTHOR_FEED_RSS = None
 # Blogroll
 # LINKS = (('Pelican', 'http://getpelican.com/'),
 #          ('Python.org', 'http://python.org/'),
-#          ('Jinja2', 'http://jinja.pocoo.org/'),
 #          ('You can modify those links in your config file', '#'),)
 
 # Social widget
@@ -57,9 +56,10 @@ SITENAME = 'Robin Berghuijs Design'
 INDEX_SAVE_AS = 'blog/index.html'
 INDEX_URL = 'blog'
 MENUITEMS = [
-    ('Blog', 'blog/index.html')
+    ('Blog', 'blog/')
 ]
 CSS_FILE = 'main.css'
+JS_FILE = 'main.js'
 
 I18N_SUBSITES = {
     # 'nl': {
@@ -77,10 +77,12 @@ I18N_SUBSITES = {
         'SITENAME': 'Robin Berghuijs Design',
         'INDEX_SAVE_AS': 'blog/index.html',
         'MENUITEMS': [
-            ('Blog','blog/index.html'),
+            ('Blog','blog/'),
         ],
     }
 }
+JINJA_EXTENSIONS = ['jinja2.ext.i18n']
+I18N_GETTEXT_DOMAIN = 'flobin'
 
 DELETE_OUTPUT_DIRECTORY = True
 

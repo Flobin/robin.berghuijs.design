@@ -3,6 +3,10 @@
 <head>
         {% block head %}
         <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="twitter:creator" content="@Flobin">
+        <meta name="twitter:card" content="summary">
         <meta charset="utf-8" />
         {% if FEED_ALL_ATOM %}
         <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Full Atom Feed" />
@@ -29,38 +33,64 @@
         <link href="{{ FEED_DOMAIN }}/{{ TAG_FEED_RSS|format(tag.slug) }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Tags RSS Feed" />
         {% endif %}
         <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/{{ CSS_FILE }}" />
+        <script>
+          (function(d) {
+            var config = {
+              kitId: 'xof5sjx',
+              scriptTimeout: 3000,
+              async: true
+            },
+            h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+          })(document);
+        </script>
         {% endblock head %}
 </head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="{{ SITEURL }}/">{{ SITENAME }} <strong>{{ SITESUBTITLE }}</strong></a></h1>
+<body id="index" class="{% block template_class %}{% endblock template_class %}">
+        <header class="site-header" role="banner" id="header">
+            <a href="/">
+                <img class="logo" id="logo" src="{{SITEURL}}/theme/img/logo_horizontal.png" alt="robinberghuijs.com logo" />
+            </a>
+            <nav role="navigation">
+                <input type="checkbox" id="toggle" />
+                <label for="toggle" class="toggle"></label>
+                <ul class="menu">
+                {% for title, link in MENUITEMS %}
+                    <li class="parent">
+                        <a class="menuitem" href="{{ link }}">{{ title }}</a>
+                    </li>
+                {% endfor %}
+                {% if DISPLAY_PAGES_ON_MENU %}
+                  {% for p in pages %}
+                    <li{% if p == page %} class="active parent"{% endif %}>
+                        <a class="menuitem" href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
+                    </li>
+                  {% endfor %}
+                {% else %}
+                  {% if DISPLAY_CATEGORIES_ON_MENU %}
+                    {% for cat, null in categories %}
+                      <li{% if cat == category %} class="active parent"{% endif %}>
+                        <a class="menuitem" href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a>
+                    </li>
+                    {% endfor %}
+                  {% endif %}
+                {% endif %}
+                    <li class="parent">
+                        {% block translation_links %}
+                        {% endblock translation_links %}
+                    <li>
+                </ul>
+            </nav><!-- /#menu -->
         </header><!-- /#banner -->
-        <nav id="menu"><ul>
-        {% for title, link in MENUITEMS %}
-            <li><a href="{{ link }}">{{ title }}</a></li>
-        {% endfor %}
-        {% if DISPLAY_PAGES_ON_MENU %}
-          {% for p in pages %}
-            <li{% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
-          {% endfor %}
-        {% else %}
-          {% if DISPLAY_CATEGORIES_ON_MENU %}
-            {% for cat, null in categories %}
-              <li{% if cat == category %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
-            {% endfor %}
-          {% endif %}
-        {% endif %}
-        {% block translation_links %}
-        {% endblock translation_links %}
-        </ul></nav><!-- /#menu -->
-        {% block content %}
-        {% endblock %}
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
-                which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
+        <main class="main content" role="main">
+            {% block breadcrumbs %}
+            {% endblock breadcrumbs %}
+            {% block content %}
+            {% endblock %}
+        </main>
+        <footer id="contentinfo" class="site-footer">
+            {% trans %}Gemaakt met &hearts; in Den Haag{% endtrans %}
         </footer><!-- /#contentinfo -->
+        <script src="{{ SITEURL }}/theme/js/{{ JS_FILE }}"></script>
 </body>
 </html>
